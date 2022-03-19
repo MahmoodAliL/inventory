@@ -1,0 +1,9 @@
+import '..\..\provider\tables.moor';
+
+allItemInInventory:
+SELECT
+    *
+FROM
+    inventory
+ORDER BY
+    item_name ;

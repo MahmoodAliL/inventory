@@ -1,0 +1,21 @@
+import '..\..\provider\tables.moor';
+
+inventoryList (:search AS TEXT):
+SELECT
+    *
+FROM
+    inventory
+WHERE
+    item_name LIKE :search
+ORDER BY
+    id DESC
+LIMIT
+    20;
+
+incrementItemCount(:id AS INT, :itemCount AS INT):
+UPDATE
+    inventory
+SET
+    item_count = item_count + :itemCount
+WHERE
+    id = :id;

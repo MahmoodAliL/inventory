@@ -1,0 +1,7 @@
+import '..\..\provider\tables.moor';
+
+deleteItem(:id AS INT):
+DELETE FROM
+    inventory
+WHERE
+    id = :id;
