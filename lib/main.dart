@@ -11,6 +11,7 @@ void main() {
   runApp(
     DevicePreview(
       builder: (_) => const App(),
+      enabled: false,
     ),
   );
 }

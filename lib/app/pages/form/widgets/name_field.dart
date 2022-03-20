@@ -15,6 +15,7 @@ class NameField extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: FormFiledValidator.required,
           onChanged: c.onNameChanged,
+          textInputAction: TextInputAction.next,
           decoration: const InputDecoration(
             labelText: 'Name',
           ),

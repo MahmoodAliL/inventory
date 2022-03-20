@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:inventory/app/core/value/dimens.dart';
 import 'package:inventory/app/pages/home/controller/dialog_controller.dart';
@@ -46,8 +47,9 @@ class _DialogContent extends StatelessWidget {
     return GetBuilder<DialogController>(
       builder: (c) {
         return TextField(
-          
           keyboardType: TextInputType.number,
+          autofocus: true,
+          inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]'))],
           onChanged: c.onItemCountChanged,
           decoration: InputDecoration(
             labelText: 'Increment count',

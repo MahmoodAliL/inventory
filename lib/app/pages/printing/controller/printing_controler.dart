@@ -7,7 +7,7 @@ class PrintingControler {
 
   final IPrintingRepository _repository;
   static PrintingControler get to => Get.find();
-  static const int _kItemsInEachPages = 30;
+  static const int _kItemsInEachPage = 30;
 
   Future<Map<int, List<InventoryPrintingItem>>> loadAllItems() async {
     final list = <int, List<InventoryPrintingItem>>{};
@@ -15,12 +15,12 @@ class PrintingControler {
 
     either.fold((l) => null, (goodsList) {
       var start = 0;
-      var end = _kItemsInEachPages;
+      var end = _kItemsInEachPage;
       var page = 1;
       while (end <= goodsList.length) {
         list[page] = goodsList.sublist(start, end);
-        end += _kItemsInEachPages;
-        start += _kItemsInEachPages;
+        end += _kItemsInEachPage;
+        start += _kItemsInEachPage;
         page++;
       }
       list[page] = goodsList.sublist(start, goodsList.length);

@@ -15,18 +15,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Inventory',
-            style: Get.textTheme.headline6?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Inventory',
+          style: Get.textTheme.headline6?.copyWith(
+            fontWeight: FontWeight.bold,
           ),
-          actions: const [PdfIcon()],
         ),
-        body: BodyContainer(
+        actions: const [PdfIcon()],
+      ),
+      body: SafeArea(
+        child: BodyContainer(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -43,14 +43,13 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            final db = Get.find<AppDatabase>();
-            Get.toNamed<dynamic>(AppRoutes.form);
-          },
-          //label: const Text('Add'),
-          child: const Icon(Icons.add),
-        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: ()  {
+          Get.toNamed<dynamic>(AppRoutes.form);
+        },
+        //label: const Text('Add'),
+        child: const Icon(Icons.add),
       ),
     );
   }

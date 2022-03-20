@@ -3,6 +3,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:inventory/app/pages/printing/controller/printing_controler.dart';
 import 'package:inventory/app/pages/printing/widgets/pdf_page.dart';
 import 'package:pdf/pdf.dart';
@@ -26,10 +27,13 @@ class PrintingPage extends StatelessWidget {
   }
 
   Future<Uint8List> _generatePdf(PdfPageFormat format, String title) async {
-    final font = await PdfGoogleFonts.iBMPlexSansArabicMedium();
+    final font =
+        await rootBundle.load('lib/app/assets/fonts/Cairo-Medium.ttf');
+    final ttf = pw.Font.ttf(font);
+
     final pdf = pw.Document(
       title: title,
-      theme: pw.ThemeData.withFont(base: font),
+      theme: pw.ThemeData.withFont(base: ttf),
     );
 
     final result = await PrintingControler.to.loadAllItems();

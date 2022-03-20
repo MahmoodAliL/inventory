@@ -17,10 +17,10 @@ final appTheme = ThemeData(
     foregroundColor: Colors.black,
   ),
   inputDecorationTheme: InputDecorationTheme(
-    contentPadding: const EdgeInsets.symmetric(
+    /* contentPadding: const EdgeInsets.symmetric(
       horizontal: AppDimens.defaultPadding * 2,
-      //vertical: AppDimens.defaultPadding * 0.8,
-    ),
+      vertical: AppDimens.defaultPadding,
+    ), */
     filled: true,
     fillColor: Colors.grey.shade200,
     enabledBorder: const OutlineInputBorder(

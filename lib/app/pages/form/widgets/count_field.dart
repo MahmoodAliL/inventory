@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:inventory/app/pages/form/controller/form_controller.dart';
 import 'package:inventory/domain/core/validator.dart';
@@ -15,6 +16,8 @@ class CountField extends StatelessWidget {
           initialValue: c.item.count.toString(),
           autovalidateMode: AutovalidateMode.onUserInteraction,
           keyboardType: TextInputType.number,
+          
+          inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]'))],
           onChanged: c.onCountChanged,
           decoration: const InputDecoration(
             labelText: 'Count',
