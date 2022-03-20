@@ -2,7 +2,7 @@
 
 A simple app to count items in stocks
 
-Create with only 3 days at my free time , there are lots of things missing here, bad verialbes name, bad english, typo  , no test , no clean code .... as fast as I can
+Create with only 3 days at my free time , there are lots of things missing here, bad variables name, bad english, typo  , no test , no clean code .... as fast as I can
 
 ## Getting Started
 
