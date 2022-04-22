@@ -90,10 +90,9 @@ flutter:
   fonts:
     - family: Cairo
       fonts:
-        - asset: lib/app/assets/fonts/Cairo-Black.ttf
         - asset: lib/app/assets/fonts/Cairo-Regular.ttf
         - asset: lib/app/assets/fonts/Cairo-Medium.ttf
-        - asset: lib/app/assets/fonts/Cairo-Bold.ttf
+        - asset: lib/app/assets/fonts/IBMPlexSansArabic-Medium.ttf
 
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

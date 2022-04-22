@@ -27,9 +27,10 @@ class PrintingPage extends StatelessWidget {
   }
 
   Future<Uint8List> _generatePdf(PdfPageFormat format, String title) async {
-    final font =
-        await rootBundle.load('lib/app/assets/fonts/Cairo-Medium.ttf');
+    //lib\app\assets\fonts\IBMPlexSansArabic-Medium.ttf
+    final font = await rootBundle.load('lib/app/assets/fonts/IBMPlexSansArabic-Medium.ttf');
     final ttf = pw.Font.ttf(font);
+   // final font2 = await PdfGoogleFonts.iBMPlexSansArabicMedium();
 
     final pdf = pw.Document(
       title: title,
