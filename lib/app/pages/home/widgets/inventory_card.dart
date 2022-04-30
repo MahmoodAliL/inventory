@@ -39,10 +39,10 @@ class InventoryCard extends StatelessWidget {
                 child: Text(
                   item.name,
                   overflow: TextOverflow.ellipsis,
-                  style: Get.textTheme.headline6,
+                  style: Get.textTheme.subtitle2,
                 ),
               ),
-              _Count(count: item.count)
+              _Count(count: item.count),
             ],
           ),
         ),

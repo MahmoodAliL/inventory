@@ -1,18 +1,13 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:inventory/app/core/theme/theme.dart';
 import 'package:inventory/app/pages/home/binding.dart';
 import 'package:inventory/app/pages/home/page.dart';
-import 'package:inventory/app/pages/printing/page.dart';
 import 'package:inventory/app/routes/app_pages.dart';
 
 void main() {
   runApp(
-    DevicePreview(
-      builder: (_) => const App(),
-      enabled: false,
-    ),
+    const App(),
   );
 }
 

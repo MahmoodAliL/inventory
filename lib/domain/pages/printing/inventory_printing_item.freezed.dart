@@ -12,27 +12,14 @@ part of 'inventory_printing_item.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$InventoryPrintingItemTearOff {
-  const _$InventoryPrintingItemTearOff();
-
-  _InventoryPrintingItem call({required String name, required int count}) {
-    return _InventoryPrintingItem(
-      name: name,
-      count: count,
-    );
-  }
-}
-
-/// @nodoc
-const $InventoryPrintingItem = _$InventoryPrintingItemTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$InventoryPrintingItem {
   String get name => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
+  double get totalPrice => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $InventoryPrintingItemCopyWith<InventoryPrintingItem> get copyWith =>
@@ -44,7 +31,7 @@ abstract class $InventoryPrintingItemCopyWith<$Res> {
   factory $InventoryPrintingItemCopyWith(InventoryPrintingItem value,
           $Res Function(InventoryPrintingItem) then) =
       _$InventoryPrintingItemCopyWithImpl<$Res>;
-  $Res call({String name, int count});
+  $Res call({String name, int count, double price, double totalPrice});
 }
 
 /// @nodoc
@@ -60,6 +47,8 @@ class _$InventoryPrintingItemCopyWithImpl<$Res>
   $Res call({
     Object? name = freezed,
     Object? count = freezed,
+    Object? price = freezed,
+    Object? totalPrice = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -70,6 +59,14 @@ class _$InventoryPrintingItemCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      totalPrice: totalPrice == freezed
+          ? _value.totalPrice
+          : totalPrice // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -81,7 +78,7 @@ abstract class _$InventoryPrintingItemCopyWith<$Res>
           $Res Function(_InventoryPrintingItem) then) =
       __$InventoryPrintingItemCopyWithImpl<$Res>;
   @override
-  $Res call({String name, int count});
+  $Res call({String name, int count, double price, double totalPrice});
 }
 
 /// @nodoc
@@ -99,6 +96,8 @@ class __$InventoryPrintingItemCopyWithImpl<$Res>
   $Res call({
     Object? name = freezed,
     Object? count = freezed,
+    Object? price = freezed,
+    Object? totalPrice = freezed,
   }) {
     return _then(_InventoryPrintingItem(
       name: name == freezed
@@ -109,6 +108,14 @@ class __$InventoryPrintingItemCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      totalPrice: totalPrice == freezed
+          ? _value.totalPrice
+          : totalPrice // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -116,16 +123,24 @@ class __$InventoryPrintingItemCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_InventoryPrintingItem implements _InventoryPrintingItem {
-  const _$_InventoryPrintingItem({required this.name, required this.count});
+  const _$_InventoryPrintingItem(
+      {required this.name,
+      required this.count,
+      required this.price,
+      required this.totalPrice});
 
   @override
   final String name;
   @override
   final int count;
+  @override
+  final double price;
+  @override
+  final double totalPrice;
 
   @override
   String toString() {
-    return 'InventoryPrintingItem(name: $name, count: $count)';
+    return 'InventoryPrintingItem(name: $name, count: $count, price: $price, totalPrice: $totalPrice)';
   }
 
   @override
@@ -134,14 +149,19 @@ class _$_InventoryPrintingItem implements _InventoryPrintingItem {
         (other.runtimeType == runtimeType &&
             other is _InventoryPrintingItem &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.count, count));
+            const DeepCollectionEquality().equals(other.count, count) &&
+            const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality()
+                .equals(other.totalPrice, totalPrice));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(count));
+      const DeepCollectionEquality().hash(count),
+      const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(totalPrice));
 
   @JsonKey(ignore: true)
   @override
@@ -152,12 +172,19 @@ class _$_InventoryPrintingItem implements _InventoryPrintingItem {
 
 abstract class _InventoryPrintingItem implements InventoryPrintingItem {
   const factory _InventoryPrintingItem(
-      {required String name, required int count}) = _$_InventoryPrintingItem;
+      {required final String name,
+      required final int count,
+      required final double price,
+      required final double totalPrice}) = _$_InventoryPrintingItem;
 
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  int get count;
+  int get count => throw _privateConstructorUsedError;
+  @override
+  double get price => throw _privateConstructorUsedError;
+  @override
+  double get totalPrice => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$InventoryPrintingItemCopyWith<_InventoryPrintingItem> get copyWith =>

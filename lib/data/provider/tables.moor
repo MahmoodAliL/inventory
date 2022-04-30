@@ -1,7 +1,8 @@
 CREATE TABLE inventory (
   id INT NOT NULL PRIMARY KEY AUTOINCREMENT,
   item_name TEXT NOT NULL,
-  item_count INT NOT NULL
+  item_count INT NOT NULL,
+  item_price REAL NOT NULL
 );
 
 CREATE INDEX inventory_item_name ON inventory (item_name);

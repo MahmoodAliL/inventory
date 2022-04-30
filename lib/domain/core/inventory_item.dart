@@ -8,11 +8,13 @@ abstract class InventoryItem with _$InventoryItem {
     required int id,
     required String name,
     required int count,
+    required double price,
   }) = _InventoryItem;
 
   factory InventoryItem.empty() => const InventoryItem(
         id: -1,
         name: '',
         count: 0,
+        price: 0,
       );
 }

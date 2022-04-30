@@ -11,8 +11,12 @@ class InventoryData extends DataClass implements Insertable<InventoryData> {
   final int id;
   final String itemName;
   final int itemCount;
+  final double itemPrice;
   InventoryData(
-      {required this.id, required this.itemName, required this.itemCount});
+      {required this.id,
+      required this.itemName,
+      required this.itemCount,
+      required this.itemPrice});
   factory InventoryData.fromData(Map<String, dynamic> data, {String? prefix}) {
     final effectivePrefix = prefix ?? '';
     return InventoryData(
@@ -22,6 +26,8 @@ class InventoryData extends DataClass implements Insertable<InventoryData> {
           .mapFromDatabaseResponse(data['${effectivePrefix}item_name'])!,
       itemCount: const IntType()
           .mapFromDatabaseResponse(data['${effectivePrefix}item_count'])!,
+      itemPrice: const RealType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}item_price'])!,
     );
   }
   @override
@@ -30,6 +36,7 @@ class InventoryData extends DataClass implements Insertable<InventoryData> {
     map['id'] = Variable<int>(id);
     map['item_name'] = Variable<String>(itemName);
     map['item_count'] = Variable<int>(itemCount);
+    map['item_price'] = Variable<double>(itemPrice);
     return map;
   }
 
@@ -38,6 +45,7 @@ class InventoryData extends DataClass implements Insertable<InventoryData> {
       id: Value(id),
       itemName: Value(itemName),
       itemCount: Value(itemCount),
+      itemPrice: Value(itemPrice),
     );
   }
 
@@ -48,6 +56,7 @@ class InventoryData extends DataClass implements Insertable<InventoryData> {
       id: serializer.fromJson<int>(json['id']),
       itemName: serializer.fromJson<String>(json['item_name']),
       itemCount: serializer.fromJson<int>(json['item_count']),
+      itemPrice: serializer.fromJson<double>(json['item_price']),
     );
   }
   @override
@@ -57,69 +66,84 @@ class InventoryData extends DataClass implements Insertable<InventoryData> {
       'id': serializer.toJson<int>(id),
       'item_name': serializer.toJson<String>(itemName),
       'item_count': serializer.toJson<int>(itemCount),
+      'item_price': serializer.toJson<double>(itemPrice),
     };
   }
 
-  InventoryData copyWith({int? id, String? itemName, int? itemCount}) =>
+  InventoryData copyWith(
+          {int? id, String? itemName, int? itemCount, double? itemPrice}) =>
       InventoryData(
         id: id ?? this.id,
         itemName: itemName ?? this.itemName,
         itemCount: itemCount ?? this.itemCount,
+        itemPrice: itemPrice ?? this.itemPrice,
       );
   @override
   String toString() {
     return (StringBuffer('InventoryData(')
           ..write('id: $id, ')
           ..write('itemName: $itemName, ')
-          ..write('itemCount: $itemCount')
+          ..write('itemCount: $itemCount, ')
+          ..write('itemPrice: $itemPrice')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, itemName, itemCount);
+  int get hashCode => Object.hash(id, itemName, itemCount, itemPrice);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is InventoryData &&
           other.id == this.id &&
           other.itemName == this.itemName &&
-          other.itemCount == this.itemCount);
+          other.itemCount == this.itemCount &&
+          other.itemPrice == this.itemPrice);
 }
 
 class InventoryCompanion extends UpdateCompanion<InventoryData> {
   final Value<int> id;
   final Value<String> itemName;
   final Value<int> itemCount;
+  final Value<double> itemPrice;
   const InventoryCompanion({
     this.id = const Value.absent(),
     this.itemName = const Value.absent(),
     this.itemCount = const Value.absent(),
+    this.itemPrice = const Value.absent(),
   });
   InventoryCompanion.insert({
     this.id = const Value.absent(),
     required String itemName,
     required int itemCount,
+    required double itemPrice,
   })  : itemName = Value(itemName),
-        itemCount = Value(itemCount);
+        itemCount = Value(itemCount),
+        itemPrice = Value(itemPrice);
   static Insertable<InventoryData> custom({
     Expression<int>? id,
     Expression<String>? itemName,
     Expression<int>? itemCount,
+    Expression<double>? itemPrice,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (itemName != null) 'item_name': itemName,
       if (itemCount != null) 'item_count': itemCount,
+      if (itemPrice != null) 'item_price': itemPrice,
     });
   }
 
   InventoryCompanion copyWith(
-      {Value<int>? id, Value<String>? itemName, Value<int>? itemCount}) {
+      {Value<int>? id,
+      Value<String>? itemName,
+      Value<int>? itemCount,
+      Value<double>? itemPrice}) {
     return InventoryCompanion(
       id: id ?? this.id,
       itemName: itemName ?? this.itemName,
       itemCount: itemCount ?? this.itemCount,
+      itemPrice: itemPrice ?? this.itemPrice,
     );
   }
 
@@ -135,6 +159,9 @@ class InventoryCompanion extends UpdateCompanion<InventoryData> {
     if (itemCount.present) {
       map['item_count'] = Variable<int>(itemCount.value);
     }
+    if (itemPrice.present) {
+      map['item_price'] = Variable<double>(itemPrice.value);
+    }
     return map;
   }
 
@@ -143,7 +170,8 @@ class InventoryCompanion extends UpdateCompanion<InventoryData> {
     return (StringBuffer('InventoryCompanion(')
           ..write('id: $id, ')
           ..write('itemName: $itemName, ')
-          ..write('itemCount: $itemCount')
+          ..write('itemCount: $itemCount, ')
+          ..write('itemPrice: $itemPrice')
           ..write(')'))
         .toString();
   }
@@ -172,8 +200,14 @@ class Inventory extends Table with TableInfo<Inventory, InventoryData> {
       type: const IntType(),
       requiredDuringInsert: true,
       $customConstraints: 'NOT NULL');
+  final VerificationMeta _itemPriceMeta = const VerificationMeta('itemPrice');
+  late final GeneratedColumn<double?> itemPrice = GeneratedColumn<double?>(
+      'item_price', aliasedName, false,
+      type: const RealType(),
+      requiredDuringInsert: true,
+      $customConstraints: 'NOT NULL');
   @override
-  List<GeneratedColumn> get $columns => [id, itemName, itemCount];
+  List<GeneratedColumn> get $columns => [id, itemName, itemCount, itemPrice];
   @override
   String get aliasedName => _alias ?? 'inventory';
   @override
@@ -197,6 +231,12 @@ class Inventory extends Table with TableInfo<Inventory, InventoryData> {
           itemCount.isAcceptableOrUnknown(data['item_count']!, _itemCountMeta));
     } else if (isInserting) {
       context.missing(_itemCountMeta);
+    }
+    if (data.containsKey('item_price')) {
+      context.handle(_itemPriceMeta,
+          itemPrice.isAcceptableOrUnknown(data['item_price']!, _itemPriceMeta));
+    } else if (isInserting) {
+      context.missing(_itemPriceMeta);
     }
     return context;
   }
@@ -225,7 +265,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       'CREATE INDEX inventory_item_name ON inventory (item_name);');
   Selectable<InventoryData> allItemInInventory() {
     return customSelect(
-        'SELECT\r\n    *\r\nFROM\r\n    inventory\r\nORDER BY\r\n    id DESC',
+        'SELECT\r\n    *\r\nFROM\r\n    inventory\r\nORDER BY\r\n    item_name',
         variables: [],
         readsFrom: {
           inventory,

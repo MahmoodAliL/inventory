@@ -12,30 +12,14 @@ part of 'inventory_item.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$InventoryItemTearOff {
-  const _$InventoryItemTearOff();
-
-  _InventoryItem call(
-      {required int id, required String name, required int count}) {
-    return _InventoryItem(
-      id: id,
-      name: name,
-      count: count,
-    );
-  }
-}
-
-/// @nodoc
-const $InventoryItem = _$InventoryItemTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$InventoryItem {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $InventoryItemCopyWith<InventoryItem> get copyWith =>
@@ -47,7 +31,7 @@ abstract class $InventoryItemCopyWith<$Res> {
   factory $InventoryItemCopyWith(
           InventoryItem value, $Res Function(InventoryItem) then) =
       _$InventoryItemCopyWithImpl<$Res>;
-  $Res call({int id, String name, int count});
+  $Res call({int id, String name, int count, double price});
 }
 
 /// @nodoc
@@ -64,6 +48,7 @@ class _$InventoryItemCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? count = freezed,
+    Object? price = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -78,6 +63,10 @@ class _$InventoryItemCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -89,7 +78,7 @@ abstract class _$InventoryItemCopyWith<$Res>
           _InventoryItem value, $Res Function(_InventoryItem) then) =
       __$InventoryItemCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String name, int count});
+  $Res call({int id, String name, int count, double price});
 }
 
 /// @nodoc
@@ -108,6 +97,7 @@ class __$InventoryItemCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? count = freezed,
+    Object? price = freezed,
   }) {
     return _then(_InventoryItem(
       id: id == freezed
@@ -122,6 +112,10 @@ class __$InventoryItemCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -130,7 +124,10 @@ class __$InventoryItemCopyWithImpl<$Res>
 
 class _$_InventoryItem implements _InventoryItem {
   const _$_InventoryItem(
-      {required this.id, required this.name, required this.count});
+      {required this.id,
+      required this.name,
+      required this.count,
+      required this.price});
 
   @override
   final int id;
@@ -138,10 +135,12 @@ class _$_InventoryItem implements _InventoryItem {
   final String name;
   @override
   final int count;
+  @override
+  final double price;
 
   @override
   String toString() {
-    return 'InventoryItem(id: $id, name: $name, count: $count)';
+    return 'InventoryItem(id: $id, name: $name, count: $count, price: $price)';
   }
 
   @override
@@ -151,7 +150,8 @@ class _$_InventoryItem implements _InventoryItem {
             other is _InventoryItem &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.count, count));
+            const DeepCollectionEquality().equals(other.count, count) &&
+            const DeepCollectionEquality().equals(other.price, price));
   }
 
   @override
@@ -159,7 +159,8 @@ class _$_InventoryItem implements _InventoryItem {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(count));
+      const DeepCollectionEquality().hash(count),
+      const DeepCollectionEquality().hash(price));
 
   @JsonKey(ignore: true)
   @override
@@ -169,16 +170,19 @@ class _$_InventoryItem implements _InventoryItem {
 
 abstract class _InventoryItem implements InventoryItem {
   const factory _InventoryItem(
-      {required int id,
-      required String name,
-      required int count}) = _$_InventoryItem;
+      {required final int id,
+      required final String name,
+      required final int count,
+      required final double price}) = _$_InventoryItem;
 
   @override
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  int get count;
+  int get count => throw _privateConstructorUsedError;
+  @override
+  double get price => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$InventoryItemCopyWith<_InventoryItem> get copyWith =>

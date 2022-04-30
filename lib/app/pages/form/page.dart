@@ -5,6 +5,7 @@ import 'package:inventory/app/pages/form/controller/form_controller.dart';
 import 'package:inventory/app/pages/form/widgets/action_bar.dart';
 import 'package:inventory/app/pages/form/widgets/count_field.dart';
 import 'package:inventory/app/pages/form/widgets/name_field.dart';
+import 'package:inventory/app/pages/form/widgets/price_field.dart';
 import 'package:inventory/app/pages/form/widgets/save_button.dart';
 
 class FormPage extends StatelessWidget {
@@ -25,6 +26,8 @@ class FormPage extends StatelessWidget {
               children: [
                 const SizedBox(height: AppDimens.defaultPadding * 4),
                 const NameField(),
+                const SizedBox(height: AppDimens.defaultPadding * 2),
+                const PriceField(),
                 const SizedBox(height: AppDimens.defaultPadding * 2),
                 const CountField(),
                 const SizedBox(height: AppDimens.defaultPadding * 4),

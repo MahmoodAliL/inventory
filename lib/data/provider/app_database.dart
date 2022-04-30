@@ -9,7 +9,7 @@ import 'package:path_provider_windows/path_provider_windows.dart';
 
 part 'app_database.g.dart';
 
-const String _databaseName = 'db.sqlite';
+const String _databaseName = 'database.sqlite';
 const int _databaseVersion = 1;
 
 @DriftDatabase(

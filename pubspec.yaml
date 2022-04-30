@@ -34,17 +34,18 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  freezed_annotation: ^1.1.0
+  cupertino_icons: ^1.0.4
+  freezed_annotation: ^2.0.1
   dartz: ^0.10.1
   get: ^4.6.1
-  device_preview: ^1.0.0
+  device_preview: ^0.1.4-beta
   drift: ^1.5.0
   path_provider: ^2.0.9
-  printing: ^5.7.3
-  sqlite3_flutter_libs: ^0.5.4
+  printing: ^5.8.0
+  sqlite3_flutter_libs: ^0.5.5
   path: ^1.8.0
-  sqflite: ^2.0.2
+  sqflite: ^2.0.2+1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -55,8 +56,8 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^1.0.0
-  freezed: ^1.1.1
+  flutter_lints: ^1.0.4
+  freezed: ^2.0.2
   build_runner: ^2.1.8
   very_good_analysis: ^2.4.0
   drift_dev: ^1.5.2

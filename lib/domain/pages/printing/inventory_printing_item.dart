@@ -7,5 +7,7 @@ abstract class InventoryPrintingItem with _$InventoryPrintingItem {
   const factory InventoryPrintingItem({
     required String name,
     required int count,
+    required double price, 
+    required double totalPrice,
   }) = _InventoryPrintingItem;
 }

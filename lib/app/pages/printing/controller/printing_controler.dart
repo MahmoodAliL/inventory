@@ -7,7 +7,7 @@ class PrintingControler {
 
   final IPrintingRepository _repository;
   static PrintingControler get to => Get.find();
-  static const int _kItemsInEachPage = 30;
+  static const int _kItemsInEachPage = 29;
 
   Future<Map<int, List<InventoryPrintingItem>>> loadAllItems() async {
     final list = <int, List<InventoryPrintingItem>>{};

@@ -33,6 +33,11 @@ class FormController extends GetxController {
     update();
   }
 
+  void onPriceChanged(String value) {
+    item = item.copyWith(price: double.tryParse(value) ?? 0);
+    update();
+  }
+
   Future<void> save() async {
     Get.log('save: $item');
     final either = await _repository.insertOnConflictUpdate(item: item);
