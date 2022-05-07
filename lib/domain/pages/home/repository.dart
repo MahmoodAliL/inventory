@@ -10,4 +10,6 @@ abstract class IHomeRepository {
     required int id,
     required int count,
   });
+
+  Future<Either<Failure, Unit>> resetData();
 }

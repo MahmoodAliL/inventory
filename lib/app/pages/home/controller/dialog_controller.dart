@@ -10,7 +10,7 @@ class DialogController extends GetxController {
 
   int _count = 0;
   String? errorMessage;
-
+  
   void onItemCountChanged(String input) {
     errorMessage = FormFiledValidator.required(input);
     if (errorMessage == null) {

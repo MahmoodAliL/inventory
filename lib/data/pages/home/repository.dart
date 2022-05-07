@@ -39,4 +39,15 @@ class HomeRepository implements IHomeRepository {
       yield left(const Failure.unexpectedError());
     }
   }
+
+  @override
+  Future<Either<Failure, Unit>> resetData() async {
+    try {
+      await db.resetData();
+      return right(unit);
+    } on Exception catch (e) {
+      Get.log(e.toString());
+      return left(const Failure.unexpectedError());
+    }
+  }
 }

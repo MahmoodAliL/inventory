@@ -19,3 +19,10 @@ SET
     item_count = item_count + :itemCount
 WHERE
     id = :id;
+
+resetData:
+UPDATE
+    inventory
+SET
+    item_count = 0,
+    item_price = 0.0;

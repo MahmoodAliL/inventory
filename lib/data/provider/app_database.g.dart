@@ -301,6 +301,15 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     );
   }
 
+  Future<int> resetData() {
+    return customUpdate(
+      'UPDATE\r\n    inventory\r\nSET\r\n    item_count = 0,\r\n    item_price = 0.0',
+      variables: [],
+      updates: {inventory},
+      updateKind: UpdateKind.update,
+    );
+  }
+
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override

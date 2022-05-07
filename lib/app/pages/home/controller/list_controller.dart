@@ -23,6 +23,10 @@ class ListController extends GetxController
     super.onInit();
   }
 
+  void resetData() {
+    repository.resetData();
+  }
+
   void _search({required String searchWord}) {
     final stream = repository.watchInventoryList(searchWord: searchWord);
     _subscription = stream.listen((either) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:inventory/app/core/utils/value_transformer.dart';
 import 'package:inventory/app/core/value/dimens.dart';
 import 'package:inventory/domain/core/inventory_item.dart';
 
@@ -33,16 +34,29 @@ class InventoryCard extends StatelessWidget {
           ),
           child: Row(
             children: <Widget>[
-              AddButton(onPress: onAddIconPressed),
-              const SizedBox(width: AppDimens.defaultPadding * 2),
               Expanded(
-                child: Text(
-                  item.name,
-                  overflow: TextOverflow.ellipsis,
-                  style: Get.textTheme.subtitle2,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.name,
+                      overflow: TextOverflow.ellipsis,
+                      style: Get.textTheme.subtitle1?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    Text(
+                      '${item.price.toStringDefaultFormat()}\$',
+                      style: Get.textTheme.subtitle2,
+                    ),
+                  ],
                 ),
               ),
               _Count(count: item.count),
+              const SizedBox(width: AppDimens.defaultPadding * 2),
+              AddButton(onPress: onAddIconPressed),
             ],
           ),
         ),
