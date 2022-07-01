@@ -283,7 +283,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
 
   Selectable<InventoryData> inventoryList({required String search}) {
     return customSelect(
-        'SELECT\r\n    *\r\nFROM\r\n    inventory\r\nWHERE\r\n    item_name LIKE :search\r\nORDER BY\r\n    id DESC\r\nLIMIT\r\n    20',
+        'SELECT\r\n    *\r\nFROM\r\n    inventory\r\nWHERE\r\n    item_name LIKE :search\r\nORDER BY\r\n    id DESC',
         variables: [
           Variable<String>(search)
         ],
@@ -303,10 +303,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
 
   Future<int> resetData() {
     return customUpdate(
-      'UPDATE\r\n    inventory\r\nSET\r\n    item_count = 0,\r\n    item_price = 0.0',
+      'DELETE FROM\r\n    inventory',
       variables: [],
       updates: {inventory},
-      updateKind: UpdateKind.update,
+      updateKind: UpdateKind.delete,
     );
   }
 

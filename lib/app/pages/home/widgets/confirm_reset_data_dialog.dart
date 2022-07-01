@@ -14,7 +14,7 @@ class ConfirmResetDataDialog extends StatelessWidget {
       ),
       title: const Text('Reset Data'),
       content: const Text(
-        'ONLY  Name of goods will be remain ALL other data will be deleted',
+        'ALL data will be deleted',
       ),
       actions: [
         TextButton(

@@ -8,9 +8,7 @@ FROM
 WHERE
     item_name LIKE :search
 ORDER BY
-    id DESC
-LIMIT
-    20;
+    id DESC;
 
 incrementItemCount(:id AS INT, :itemCount AS INT):
 UPDATE
@@ -21,8 +19,5 @@ WHERE
     id = :id;
 
 resetData:
-UPDATE
-    inventory
-SET
-    item_count = 0,
-    item_price = 0.0;
+DELETE FROM
+    inventory;
